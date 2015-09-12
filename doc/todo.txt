@@ -1,0 +1,53 @@
+TODO
+  - add file upload, csv processing
+  - make the rank options a config, group all values together
+  
+  - before GIT deploy
+    - remove db/*.csv files (or encrypt)
+    - add example files
+    - squash commits into 'initial commit'
+    - move avatars to ec2?
+
+    - push this to production heroku server
+
+  - low seed is shared, multiple teams can have, should be more than 12
+    - rework badges logic
+
+  - remove the jbuilder api stuff
+
+  - player#show
+     rank all time, active columns
+
+  mo id 11
+  all, goat
+  rank1
+
+  query_params
+    sort - [values]
+    filter - [values]
+    
+  leaderboard api
+    sort map[query-param.sort values]
+    filter
+
+FEATURES
+  - image ribbon across top for players selection
+    - nice box of all images
+
+  - brag
+    - facebook integration uses the 'baseball card style page for the user'
+  - /user/me shows this page
+
+  - create a carosuel on main page with user ranks, scroll through
+
+  - hall of fame
+  - hall of shame
+  - one hit wonders
+
+  - build authentication myself
+    - watch the railscasts on how he does
+    - redo
+    - then implement devise / omniauth
+
+  - need a comments section
+

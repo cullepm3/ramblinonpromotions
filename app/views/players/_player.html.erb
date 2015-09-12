@@ -1,0 +1,21 @@
+<tr id="<%=player.id%>" data-player="<%= player.id %>">
+  <td class="half"><h1><%= player.rank %><sup><%= player.tie ? "*" : "".html_safe %></sup></h1></td>
+  <td><%= image_tag player.image_path,  class:"pic" %></td>
+  <td class="stats">
+    <a href="<%= player_path(player) %>"><%= player.short_name%> </a>
+    <br>
+      &nbsp;Years Played: <%= player.total_years %> <br>
+      &nbsp;Wins (avg): <%= number_with_precision(player.avg_wins, precision:1) %> <br>
+      &nbsp;Draft (avg): <%= number_with_precision(player.avg_draft, precision:1) %>
+  </td>
+  <td class="badges badgecell">
+    <ul>
+    <% Badge.ordered(sort).each do |badge| %>
+      <%if player.total_badges_for(badge.type) > 0 %>
+        <li> <%= image_tag(badge.image_url, class:"badge") %> X <%=player.total_badges_for(badge.type)%></li>
+      <% end %>
+    <% end %>
+  </td>
+  <td class="half"><h2><%= number_to_currency(player.total_earnings, precision:0) %></h2></td>
+  <td class="half"><h2><%= number_to_currency(player.avg_earnings, precision:0) %></h2></td>
+</tr>

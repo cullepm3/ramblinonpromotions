@@ -1,0 +1,44 @@
+<% content_for :page_title do %>
+  <h1>Leaderboard</h1>
+
+  <div class="subtitle">
+    <% if badge=Badge.for_sort(sort) %>
+      <%= image_tag(badge.image_url, class:"badge") %>
+    <% end %>
+    <%= rank_subtitle %>
+  </div>
+
+  <div class="table-options">
+
+    <% ordered_rank_sort_keys.each do |key| %>
+      <% selected = key == sort.to_sym ? "selected" : "" %>
+      <%= link_to(rank_sort_options[key], rank_players_path(sort:key, filter:filter), class:selected) %>
+    <% end %>
+
+    &nbsp;|&nbsp;
+      <% rank_filter_options.each do |option, text| %>
+        <% selected = option == filter.to_sym ? "selected" : "" %>
+        <%= link_to(text, rank_players_path(sort:sort, filter:option), class:selected) %>
+      <% end %>
+  </div>
+<% end %>
+
+
+<table>
+  <% 6.times do %> <col> <% end %>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th></th>
+      <th></th>
+      <th>Badges</th>
+      <th>Total</th>
+      <th>Avg</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @players.each do |player| %>
+      <%= render 'player', player:player %>
+    <% end %>
+  </tbody>
+</table>

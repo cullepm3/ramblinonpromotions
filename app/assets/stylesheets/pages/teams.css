@@ -1,0 +1,47 @@
+.teams table {
+  font-size:9px;
+  width: 450px;
+}
+
+.teams th {
+  background-color:white;
+  border-bottom: 1px solid #eee;
+  padding-bottom:10px;
+  padding-left:1px;
+  white-space: nowrap;
+}
+
+.teams tr {
+  border-bottom: 1px solid #eee;
+}
+
+.teams tr:last-child {
+  background-color:white;
+  border-bottom: none;
+  font-weight:bold;
+}
+
+.teams td:first-child {
+  padding-right:2px;
+}
+
+.teams col:nth-child(2n+4) {
+  background: #eee
+}
+
+.teams td {
+  padding: 5px 0;
+  text-align: center;
+}
+
+td.align-right {
+  text-align: right !important;
+}
+
+td.align-left {
+  text-align: left !important;
+}
+
+.teams tbody tr td {
+  padding-top:4px;
+}

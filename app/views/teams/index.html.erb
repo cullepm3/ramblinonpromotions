@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<% content_for :page_title do %>
+  <h1>Results</h1>
+  <br>
+<% end %>
+
+<% @teams.group_by(&:year).each do |year, teams| %>
+  <br><br>
+  
+  <%= render "teams", year:year, teams:teams%>
+
+<% end %>
+<br><br>

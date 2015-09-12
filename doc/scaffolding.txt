@@ -1,0 +1,9 @@
+#Player
+rails generate scaffold Player name:string years:integer wins:integer draft:integer champ:integer pts_champ:integer low_seed:integer goat:integer total:decimal image_url:string active:boolean wins_avg:decimal draft_avg:decimal total_avg:decimal
+
+#Teams
+rails generate scaffold Team year:integer name:string draft:integer r1:integer r2:integer r3:integer r4:integer r5:integer r6:integer wins:integer pts:boolean low:boolean earnings:boolean ptschamp:boolean goat:boolean manager_id:integer assistant_id:integer
+
+
+
+select players.* from players, teams where (teams.manager_id = players.id or teams.assistant_id = players.id) and teams.year = 2014;

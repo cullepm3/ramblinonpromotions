@@ -1,0 +1,73 @@
+<%= form_for(@player) do |f| %>
+  <% if @player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@player.errors.count, "error") %> prohibited this player from being saved:</h2>
+
+      <ul>
+      <% @player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :years %><br>
+    <%= f.number_field :years %>
+  </div>
+  <div class="field">
+    <%= f.label :wins %><br>
+    <%= f.number_field :wins %>
+  </div>
+  <div class="field">
+    <%= f.label :draft %><br>
+    <%= f.number_field :draft %>
+  </div>
+  <div class="field">
+    <%= f.label :champ %><br>
+    <%= f.number_field :champ %>
+  </div>
+  <div class="field">
+    <%= f.label :pts_champ %><br>
+    <%= f.number_field :pts_champ %>
+  </div>
+  <div class="field">
+    <%= f.label :low_seed %><br>
+    <%= f.number_field :low_seed %>
+  </div>
+  <div class="field">
+    <%= f.label :goat %><br>
+    <%= f.number_field :goat %>
+  </div>
+  <div class="field">
+    <%= f.label :total %><br>
+    <%= f.text_field :total %>
+  </div>
+  <div class="field">
+    <%= f.label :image_url %><br>
+    <%= f.text_field :image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :wins_avg %><br>
+    <%= f.text_field :wins_avg %>
+  </div>
+  <div class="field">
+    <%= f.label :draft_avg %><br>
+    <%= f.text_field :draft_avg %>
+  </div>
+  <div class="field">
+    <%= f.label :total_avg %><br>
+    <%= f.text_field :total_avg %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

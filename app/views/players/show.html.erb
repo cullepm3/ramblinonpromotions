@@ -1,0 +1,156 @@
+<% content_for :nav do %>
+  <%= link_to "Leaderboard", rank_players_path %> |
+  <%= link_to "Prev", player_path(@player.prev) %> |
+  <%= link_to "Next", player_path(@player.next) %>
+<% end %>
+
+
+<% content_for :page_title do %>
+  
+  <div style="position:relative; width:100%">
+    <%= image_tag @player.image_path, class:"avatar" %>
+    <h1 style="font-size:18px;position:absolute; bottom:25px; right:0;left:0;margin:0 auto"><%= @player.short_name %></h1>
+    
+  </div>
+  <div style="clear: both;"></div>
+
+<% end %>
+
+  <div id="summary">
+    <table id="player-summary">
+      <% 5.times do %> <col> <% end %>
+      <thead>
+        <tr>
+          <th width="100">Stat<br>&nbsp;</td>
+          <th width="50"></td>
+          <th width="50">Rank <br><span style="font-size:8px;color:gray">All Time</td>
+          <th width="50">Rank <br><span style="font-size:8px;color:gray">Current</td>
+          <th >Years <br>&nbsp;</td>
+        </tr>
+      </thead
+      <tbody>
+
+      <tr>
+        <td>Avg Winning: </td>
+        <td><%= number_to_currency(@player.avg_earnings) %></td>
+        <td><%= rank_all_link_to(@player, "avg_earnings") %></td>
+        <td><%= rank_active_link_to(@player, "avg_earnings") %></td>
+        <td></td></tr>
+
+      <tr>
+        <td>Total Winnings: </td>
+        <td><%= number_to_currency(@player.total_earnings) %> </td>
+        <td><%= rank_all_link_to(@player, "total_earnings") %></td>
+        <td><%= rank_active_link_to(@player, "total_earnings") %></td>
+        <td></td></tr>
+
+      <tr>
+        <td width="100">Years Played: </td>
+        <td width="50"><%= pluralize(@player.total_years, "year") %></td>
+        <td><%= rank_all_link_to(@player, "total_years") %></td>
+        <td><%= rank_active_link_to(@player, "total_years") %></td>
+        <td></td></tr>
+
+      <tr>
+        <td>Avg Wins Per Year: </td>
+        <td><%= number_with_precision(@player.avg_wins, precision:1) %></td>
+        <td><%= rank_all_link_to(@player, "avg_wins") %></td>
+        <td><%= rank_active_link_to(@player, "avg_wins") %></td>
+        <td></td></tr>
+
+      <tr>
+        <td>Avg Draft Position: </td>
+        <td class="valuecell"><%= number_with_precision(@player.avg_draft, precision:1) %></td>
+        <td><%= rank_all_link_to(@player, "avg_draft") %></td>
+        <td><%= rank_active_link_to(@player, "avg_draft") %></td>
+        <td></td></tr>
+
+      <tr>
+         <td><%= image_tag("ptscrown_sm.png", width:"10px") %> Points Winner:</td>
+         <td><%= @player.total_pts_champ > 0? pluralize(@player.total_pts_champ, "year") : "" %></td>
+         <td><%= rank_all_link_to(@player, "total_pts_champ") %></td>
+         <td><%= rank_active_link_to(@player, "total_pts_champ") %></td>
+         <td><%= @player.teams.ptschamp.years.join(",") %></td></tr>
+
+      <tr>
+        <td><%= image_tag("crown_sm.png", width:"10px") %> Picked Winner:</td>
+        <td><%= @player.total_champ > 0? pluralize(@player.total_champ, "year") : "" %></td>
+        <td><%= rank_all_link_to(@player, "total_champ") %></td>
+        <td><%= rank_active_link_to(@player, "total_champ") %></td>
+        <td><%= @player.teams.champ.years.join(",") %></td></tr>
+
+      <tr>
+        <td><%= image_tag("acorn_sm.png", width:"10px") %> Low Seed Winner:</td>
+        <td><%= @player.total_lowseed > 0? pluralize(@player.total_lowseed, "year") : "" %></td>
+        <td><%= rank_all_link_to(@player, "total_lowseed") %></td>
+        <td><%= rank_active_link_to(@player, "total_lowseed") %></td>
+        <td><%= @player.teams.lowseed.years.join(",") %></td></tr>
+
+      <tr>
+        <td><%= image_tag("goat_sm.png", width:"10px") %> Fewest Points:</td>
+        <td><%= @player.total_goat > 0? pluralize(@player.total_goat, "year") : "" %></td>
+        <td><%= rank_all_link_to(@player, "total_goat") %></td>
+        <td><%= rank_active_link_to(@player, "total_goat") %></td>
+        <td><%= @player.teams.goat.years.join(",") %></td></tr>
+      </tbody>
+    </table>
+
+  </div> <!-- summary -->
+  
+  <br>
+  <div id="years">
+
+    <table id="player-teams">
+      <thead>
+        <tr>
+          <% 16.times do %> <col> <% end %>
+          <th>Year</td>
+          <th>Team</td>
+          <th>P2</td>
+          <th>D#</td>
+          <th>R1</td>
+          <th>R2</td>
+          <th>R3</td>
+          <th>R4</td>
+          <th>R5</td>
+          <th>R6</td>
+          <th>RT</td>
+          <th>PT</td>
+          <th>HI</th>
+          <th>#1</th>
+          <th>#S</th>
+          <th>LO</th>
+          <th align="right">$$</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @player.teams.each_with_index do |team, index| %>
+
+          <tr>
+          <td><%= link_to team.year, teams_path(anchor:team.year) %>   </td>
+          <td class="align-left"><%= team.name %>   </td>
+          <td class="align-left">
+            <% if team.partner(@player) %>
+              <%= link_to team.partner(@player).short_name, player_path(team.partner(@player)) %>
+            <% end %>
+          </td>
+          <td><%= team.draft %>  </td>
+          <td><%= team.r1 %>  </td>
+          <td><%= team.r2 %>  </td>
+          <td><%= team.r3 %>  </td>
+          <td><%= team.r4 %>  </td>
+          <td><%= team.r5 %>  </td>
+          <td><%= team.r6 %>  </td>
+          <td><%= team.wins %>  </td>
+          <td><%= team.pts %>  </td>
+          <td><%= team.ptschamp ? image_tag("ptscrown_sm.png", width:"10px"): "" %></td>
+          <td><%= team.r6 == 1 ?  image_tag("crown_sm.png", width:"10px"): "" %></td>
+          <td><%= team.low ? image_tag("acorn_sm.png", width:"10px"): ""%></td>
+          <td><%= team.goat ? image_tag("goat_sm.png", width:"10px"): "" %></td>
+          <td class="align-right"><%= number_to_currency(team.player_earnings) %></td>
+          </tr>
+        <% end%>
+      </tbody>
+    </table>
+    <br>
+  </div> <!-- body -->

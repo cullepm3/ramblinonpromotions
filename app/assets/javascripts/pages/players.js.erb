@@ -1,0 +1,20 @@
+// FIXME move all the erb configuration into one file
+
+APP.players =  {
+  init: function() {},
+  rank: function() {
+    $('tr')
+      .mouseover(function() {
+          $(this).find('h1').css("background-color", "#eb3d00");
+      })
+      .mouseout(function() {
+          $(this).find('h1').css("background-color", "#492da5");
+      })
+      .on('click', function() {
+        player_id = $(this).data('player');
+        if (player_id) {
+          window.location.href = "/players/" + player_id;
+        }
+      });
+  },
+}

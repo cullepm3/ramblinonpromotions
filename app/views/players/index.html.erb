@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Players</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Years</th>
+      <th>Wins</th>
+      <th>Draft</th>
+      <th>Champ</th>
+      <th>Pts champ</th>
+      <th>Low seed</th>
+      <th>Goat</th>
+      <th>Total</th>
+      <th>Image url</th>
+      <th>Active</th>
+      <th>Wins avg</th>
+      <th>Draft avg</th>
+      <th>Total avg</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.short_name %></td>
+        <td><%= player.years %></td>
+        <td><%= player.wins %></td>
+        <td><%= player.draft %></td>
+        <td><%= player.champ %></td>
+        <td><%= player.pts_champ %></td>
+        <td><%= player.low_seed %></td>
+        <td><%= player.goat %></td>
+        <td><%= player.total %></td>
+        <td><%= player.image_url %></td>
+        <td><%= player.active %></td>
+        <td><%= player.wins_avg %></td>
+        <td><%= player.draft_avg %></td>
+        <td><%= player.total_avg %></td>
+        <td><%= link_to 'Show', player %></td>
+        <td><%= link_to 'Edit', edit_player_path(player) %></td>
+        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Player', new_player_path %>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ramblinon Promotions - Player Rankings</title>
+  <meta name="viewport" content="width=492"/>
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+
+
+  <script>
+  /*
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49220005-1', 'ramblinonpromotions.com');
+    ga('send', 'pageview');
+  */
+  </script>
+
+</head>
+<body id="<%=page_id%>" class="<%=page_classes%>" >
+  <div id="container">
+    <div class="img-container">
+      <%= image_tag "logo", width:"450", id:"logo"%>
+      <div class="tagline">A champion walks among us.</div>
+
+      <%= image_tag "rams", id:"rams"%>
+      
+      <span class="nav menu">
+        <% if content_for?(:nav) %>
+          <%= yield :nav %>
+        <% else %>
+          <%= link_to "Leaderboard", rank_players_path %> |
+          <%= link_to "Results", teams_path %>
+        <% end %>
+      </span>
+
+
+      
+    </div>
+
+    <% if content_for?(:page_title) %>
+      <%= yield :page_title %>
+    <% else %>
+      <h1>Ramblin On Promotions NCAA Player Rankings</h1>
+    <% end %>
+
+    <hr>
+    <%= yield %>
+
+  </div> <!-- container -->
+</body>
+</html>

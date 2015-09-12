@@ -1,0 +1,55 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Year</th>
+      <th>Name</th>
+      <th>Manager</th>
+      <th>Assistant</th>
+      <th>Draft</th>
+      <th>R1</th>
+      <th>R2</th>
+      <th>R3</th>
+      <th>R4</th>
+      <th>R5</th>
+      <th>R6</th>
+      <th>Wins</th>
+      <th>Pts</th>
+      <th>Earnings</th>
+      <th>Ptschamp</th>
+      <th>Champ</th>
+      <th>Low</th>
+      <th>Goat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @player.teams.each do |team| %>
+      <tr>
+        <td><%= team.id %></td>
+        <td><%= team.year %></td>
+        <td><%= team.name %></td>
+        <td><%= team.manager.name %></td>
+        <td><%= team.assistant.name if team.assistant %></td>
+        <td><%= team.draft %></td>
+        <td><%= team.r1 %></td>
+        <td><%= team.r2 %></td>
+        <td><%= team.r3 %></td>
+        <td><%= team.r4 %></td>
+        <td><%= team.r5 %></td>
+        <td><%= team.r6 %></td>
+        <td><%= team.wins %></td>
+        <td><%= team.pts %></td>
+        <td><%= team.earnings %></td>
+        <td><%= team.ptschamp ? "X":"" %></td>
+        <td><%= team.r6 == 1 ? "X":"" %></td>
+        <td><%= team.low ? "X":""%></td>
+        <td><%= team.goat ? "X":"" %></td>
+        <td><%= link_to 'Show', team %></td>
+        <td><%= link_to 'Edit', edit_team_path(team) %></td>
+        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

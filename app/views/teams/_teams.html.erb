@@ -1,0 +1,69 @@
+<table id="<%=year%>">
+  <thead>
+    <% 17.times do %> <col> <% end %>
+    <tr>
+      <th><%=year%> Teams</th>
+      <th>P1</th>
+      <th>P2</th>
+      <th>DR</th>
+      <th>R1</th>
+      <th>R2</th>
+      <th>R3</th>
+      <th>R4</th>
+      <th>R5</th>
+      <th>R6</th>
+      <th>RT</th>
+      <th>PT</th>
+      <th>HI</th>
+      <th>CH</th>
+      <th>SE</th>
+      <th>LO</th>
+      <th align="right">$$</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% teams.each do |team| %>
+      <tr>
+        <td width="120px" class="align-left"><%= team.name %></td>
+        <td class="align-left"><%= link_to team.manager.short_name, player_path(team.manager)%></td>
+        <td class="align-left"><%= link_to team.assistant.short_name, player_path(team.assistant) if team.assistant %></td>
+        <td><%= team.draft %></td>
+        <td><%= team.r1 %></td>
+        <td><%= team.r2 %></td>
+        <td><%= team.r3 %></td>
+        <td><%= team.r4 %></td>
+        <td><%= team.r5 %></td>
+        <td><%= team.r6 %></td>
+        <td><%= team.wins %></td>
+        <td><%= team.pts %></td>
+        <td><%= team.ptschamp ? image_tag("ptscrown_sm.png", width:"10px"): "" %></td>
+        <td><%= team.r6 == 1 ?  image_tag("crown_sm.png", width:"10px"): "" %></td>
+        <td><%= team.low ? image_tag("acorn_sm.png", width:"10px"): ""%></td>
+        <td><%= team.goat ? image_tag("goat_sm.png", width:"10px"): "" %></td>
+        <td class="align-right"><%= number_to_currency(team.earnings, precision:2) %></td>
+      </tr>
+    <% end %>
+    
+    <tr>
+      <td ></td>
+      <td ></td>
+      <td ></td>
+      <td></td>
+      <td><%= teams.inject(0) { |sum, t| sum+t.r1 } %></td>
+      <td><%= teams.inject(0) { |sum, t| sum+t.r2 }%></td>
+      <td><%= teams.inject(0) { |sum, t| sum+t.r3 } %></td>
+      <td><%= teams.inject(0) { |sum, t| sum+t.r4 }%></td>
+      <td><%= teams.inject(0) { |sum, t| sum+t.r5 }%></td>
+      <td><%= teams.inject(0) { |sum, t| sum+t.r6 }%></td>
+      <td><%= teams.inject(0) { |sum, t| sum+t.pts } %></td>
+      <td><%= teams.inject(0) { |sum, t| sum+t.r1 } %></td>
+      <td><%= teams.inject(0) { |sum, t| t.ptschamp ? sum+1 : sum }%></td>
+      <td><%= teams.inject(0) { |sum, t| sum+t.r6 }%></td>
+      <td><%= teams.inject(0) { |sum, t| t.low ? sum+1 : sum }%></td>
+      <td><%= teams.inject(0) { |sum, t| t.goat ? sum+1 : sum }%></td>
+      <td class="align-right"><%= number_to_currency(teams.inject(0) { |sum, t| sum+t.earnings }, precision:2) %></td>
+    </tr>
+    
+  </tbody>
+</table>

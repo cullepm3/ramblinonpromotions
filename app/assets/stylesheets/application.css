@@ -1,0 +1,10 @@
+/*
+ * Site wide css goes in base.css.
+ * 
+ * Don't add css to this file.
+ *
+ *= require normalize.css
+ *= require base.css
+ *= require show.css
+ *= require_tree ./pages
+*/

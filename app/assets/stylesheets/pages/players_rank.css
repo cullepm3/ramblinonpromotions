@@ -1,0 +1,108 @@
+#players-rank .subtitle {
+  height: 22px;
+  line-height: 22px;
+  font-size: 14px;
+  text-align: center;
+  color: #333;
+  padding: 20px 0;
+  margin: 0px;
+}
+
+#players-rank .table-options {
+  font-weight: bold;
+  text-align: center;
+}
+
+#players-rank .table-options a {
+  color:#eb3d00;
+  padding: 0 1px;
+  font-weight: normal
+}
+
+#players-rank .table-options a.selected{
+  color:white;
+  background:#eb3d00;
+}
+
+#players-rank th {
+  background-color:white;
+  text-align:center;
+  padding:10px;
+  font-size:12px;
+}
+
+#players-rank tr {
+  cursor: pointer;
+}
+
+#players-rank td {
+  width: 74px;
+  padding:0;
+}
+
+#players-rank td img.pic{
+  width:100%;
+}
+
+#players-rank td h1{
+  font-size:18px;
+  color:white;
+  background-color:#492da5;
+  width:2.3em;
+  height:2.3em;
+  margin:0 auto;
+  border-radius: 50%;
+  line-height:2.3em;
+  vertical-align:middle;
+
+}
+
+#players-rank td h2{
+  font-size:18px;
+  font-weight:normal;
+}
+
+#players-rank td.stats {
+  text-align:left;
+  padding-left:5px;
+}
+
+#players-rank td.stats a{
+  color: #492da5;
+  font-weight:bold;
+}
+
+#players-rank col:nth-child(2n+4) {
+  background-color:#eee;
+}
+
+#players-rank td.half {
+  width: 37px;
+}
+
+#players-rank td.badges {
+  width: 81px;
+}
+
+.badgecell ul
+{
+  padding: 10px 2px 0 2px;
+  margin: 0px auto;
+  border: 0px;
+  text-align: left;
+}
+
+.badgecell li  {
+  display: inline-block;
+  height: 34px;
+  padding: 0px;
+  margin: 0px auto
+}
+
+.badge
+{
+  width: 22px;
+  height: 22px;
+  padding: 2px;
+  vertical-align: middle;
+}

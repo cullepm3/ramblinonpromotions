@@ -1,0 +1,66 @@
+#header
+{
+  height: 40px;
+  text-align: right;
+}
+
+#summary
+{
+  margin-top:10px;
+  margin-left:5px;
+  font-size: 10px;
+  left: 100px;
+  top: 65px;
+}
+
+#years
+{
+  margin-top:15px;
+  margin-left:5px;
+  font-size: 10px;
+  left: 1px;
+  top: 250px;
+}
+
+.tableheader
+{
+  font-size: 8px;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+a img
+{
+  border: 0px;
+}
+
+.offwhite
+{
+  background-color: #eee;
+}
+
+.bold
+{
+  font-weight: bold;
+}
+
+.nav{
+  font-size: 12px;
+  margin-right: 5px;
+}
+.center{
+  text-align: center;
+}
+#name {
+  float:left;
+  font-size:32px;
+  line-height:40px
+}
+#pic {
+  float:left;
+  margin-left:5px;
+  margin-right:5px;
+  margin-bottom:2px;
+}

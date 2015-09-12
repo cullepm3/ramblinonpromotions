@@ -1,0 +1,9 @@
+- maybe we need different but similar models for
+  the draft/bracket functionality.  some of teams fields shouldn't
+  be set, but its easier if they are for the reporting
+  functionality
+
+  Player
+  Team
+  TeamResults
+  PlayerSummary
