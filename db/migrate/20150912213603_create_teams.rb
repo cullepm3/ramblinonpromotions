@@ -12,10 +12,10 @@ class CreateTeams < ActiveRecord::Migration
       t.integer :r6, null: false, default: 0
       t.integer :wins, null: false, default: 0
       t.integer :pts, null: false, default: 0
-      t.boolean :low, null: false, default: 0
+      t.boolean :low, null: false, default: false
       t.decimal :earnings, null: false, default: 0
-      t.boolean :ptschamp, null: false, default: 0
-      t.boolean :goat, null: false, default: 0
+      t.boolean :ptschamp, null: false, default: false
+      t.boolean :goat, null: false, default: false
       t.integer :manager_id, null:false
       t.integer :assistant_id
 
